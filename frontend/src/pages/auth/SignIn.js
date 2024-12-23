@@ -79,9 +79,7 @@ export default function SignIn(props) {
 
   const handleSubmit = async (values) => {
     try {
-      console.log("values", values);
       const res = await apiClient.post("/api/login/", values);
-      console.log("res", res);
       if(res.status==200){
          const decodedData= jwtDecode(res.data.data.token);
          if (decodedData.role === "Admin") {
@@ -89,11 +87,10 @@ export default function SignIn(props) {
         } else if (decodedData.role === "Sub-Admin") {
           navigate("/dashboard/sub-dashboard");
         } else if (decodedData.role === "User") {
-          navigate("/dashboard");
+          navigate("/dashboard/user");
         } else {
           // navigate("/access-denied");
         }
-          console.log("decoded",decodedData);
           toast.success("Successfully Logged In!")
           // const data=decodeJwtToken(res.data.Data.token);
           const payload={id: decodedData.userId,token:res?.data?.data?.token,role:decodedData?.role};
@@ -101,7 +98,6 @@ export default function SignIn(props) {
           dispatch(setTokenData(payload));
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("Something Went Wrong!")
     }finally{
       resetForm();

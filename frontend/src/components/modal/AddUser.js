@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-export default function AddUser({openModal,handleChange,formik,values}) {
+export default function AddUser({type,openModal,handleChange,formik,values,RoleOptions}) {
 
   const [open, setOpen] = React.useState(openModal);
   const handleOpen = () => setOpen(true);
@@ -30,11 +30,6 @@ export default function AddUser({openModal,handleChange,formik,values}) {
   };
 
     
-const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
-    return <MenuItem key={idx} value={element.value}>{element.label}</MenuItem>
-  })
-
-
 
   return (
       <Modal
@@ -44,7 +39,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography fontWeight='bolder' fontSize='25px'>Create Users</Typography>
+          <Typography fontWeight='bolder' fontSize='25px'>{type} User</Typography>
         <Box
             component="form"
             onSubmit={formik.handleSubmit}
@@ -71,7 +66,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
                 />
               </Grid>
 
-              <Grid item xs={12}>
+           {type!="edit" &&  <Grid item xs={12}>
                 <PasswordField
                   type="password"
                   name="password"
@@ -80,7 +75,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
                   value={values.password}
                   formik={formik}
                 />
-              </Grid>
+              </Grid>}
 
               <Grid item xs={12}>
                 <MobileField
@@ -106,7 +101,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
             </Grid>
 
             <Button type="submit" fullWidth variant="contained">
-              Sign up
+              {type} User
             </Button>
           </Box>
         </Box>

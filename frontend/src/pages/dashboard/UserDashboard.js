@@ -22,7 +22,7 @@ const UserDashboard = () => {
   },[loader])
 
 
-  const columnData = ["Name", "Email", "Role"];
+  const columnData = ["Name", "Email","Phone", "Role"];
 
 
 

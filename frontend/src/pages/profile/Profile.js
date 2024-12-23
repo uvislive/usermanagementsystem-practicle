@@ -23,7 +23,6 @@ const Profile = () => {
   const fetchData=async()=>{
     try{
      const response= await apiClient.get(`/api/users/${userId}`);
-     console.log("response",response)
      setProfile(response?.data.data);
     }catch(error){
       console.log("error",error);

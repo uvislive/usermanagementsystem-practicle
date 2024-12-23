@@ -13,11 +13,9 @@ const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
 export const IMAGE_VALIDATE=Yup.mixed()
 .required("File Is Required")
 .test("fileSize", "File size is too large (Max: 2MB)", (value) => {
-  console.log("File value:", value);
   return value && value.size <= FILE_SIZE_LIMIT;
 })
 .test("fileFormat", "Unsupported file format", (value) => {
-  console.log("File value:", value);
   return value && SUPPORTED_FORMATS.includes(value.type);
 });
 

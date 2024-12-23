@@ -21,13 +21,13 @@ import AddUser from "../../components/modal/AddUser";
 import { ROLE_CONSTANTS_LIST } from "../../constants/optionsConstant";
 
 
-const RoleOptions = ROLE_CONSTANTS_LIST?.filter((element) => element.label !== "Admin")
+const RoleOptions = ROLE_CONSTANTS_LIST?.filter((element) => element.label === "User")
   .map((element, idx) => {
     return <MenuItem key={idx} value={element.value}>{element.label}</MenuItem>;
   });
 
 
-const MainDashboard = ({
+const SubAdminView = ({
   rowData,
   columnData,
   loader,
@@ -43,6 +43,8 @@ const MainDashboard = ({
   // Dialog state for delete confirmation
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [rowToDelete, setRowToDelete] = useState(null);
+
+  const adminId = useSelector((state) => state.auth.id);
 
   // Edit functions
   const handleOnEdit = (rowIndex) => {
@@ -70,8 +72,7 @@ const MainDashboard = ({
   const confirmDelete = async () => {
     try {
       loader(true);
-
-      const response = await apiClient.delete(`/api/users/${rowToDelete}`);
+      const response = await apiClient.delete(`/api/subadmin/clients/${rowToDelete}/${adminId}`);
       if (response?.data?.statusCode == 200) {
         toast.success("successfully Deleted");
       }
@@ -88,13 +89,13 @@ const MainDashboard = ({
     name: editRow?.name,
     email: editRow?.email,
     phone: editRow?.phone,
-    roleId: editRow?.roleId?._id,
+    roleId: editRow?.roleId,
   };
 
   const handleSubmit = async(values) => {
     try {
       loader(true);
-      const response = await apiClient.put(`/api/users/${editRow._id}`, {
+      const response = await apiClient.put(`/api/subadmin/clients/${adminId}/${editRow._id}`, {
         ...values,
       });      
       if (response?.data?.statusCode == 200) {
@@ -164,4 +165,4 @@ const MainDashboard = ({
   );
 };
 
-export default MainDashboard;
+export default SubAdminView;

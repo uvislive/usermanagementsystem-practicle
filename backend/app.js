@@ -14,7 +14,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use((req, res, next) => {
-    // console.log("the req is ", req.path);
     if (req.path === '/api/users/signup' || req.path==="/api/login/") {
       return next(); // Skip authentication
     }

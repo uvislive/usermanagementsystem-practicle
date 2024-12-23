@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import apiClient, { API_BASE_URL } from '../../api/apiClient'
-import { Box, Button } from '@mui/material'
+import { Box, Button, MenuItem } from '@mui/material'
 import { Create } from '@mui/icons-material'
 import AddUser from '../../components/modal/AddUser'
 import { useForm } from '../../hooks/useFormHook'
@@ -9,6 +9,13 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import MainDashboard from './UserView'
 import AssingSubAdminToUser from '../../components/modal/AssignSubAdminToUser'
+import { ROLE_CONSTANTS_LIST } from '../../constants/optionsConstant'
+
+
+const RoleOptions = ROLE_CONSTANTS_LIST?.filter((element) => element.label !== "Admin")
+  .map((element, idx) => {
+    return <MenuItem key={idx} value={element.value}>{element.label}</MenuItem>;
+  });
 
 
 
@@ -25,7 +32,6 @@ const AdminDashboard = () => {
   const fetchData=async()=>{
     try{
       const res=await apiClient.get(`${API_BASE_URL}/api/users/`)
-      console.log("users are the game",res);
       setUsers(res.data.data)
       const subAdminList=res.data.data.filter(element=> element.roleId.name=="Sub-Admin")
       const userList=res.data.data.filter(element=> element.roleId.name=="User")
@@ -41,8 +47,7 @@ const AdminDashboard = () => {
   },[loader])
 
 
-  console.log("users are the ",users)
-  const columnData = ["Name", "Email", "Role"];
+  const columnData = ["Name", "Email","PhoneNumber","Role"];
 
   const [openModal,setOpenModal]=useState(false);
   const handleOpenModal=()=>{
@@ -66,7 +71,6 @@ const AdminDashboard = () => {
   const handleSubmit = async (values) => {
     try {
       setLoader(true);
-      console.log("values", values);
       const res = await apiClient.post("/api/users/signup", values);
       if(res.status==200){
           toast.success("User Registered!")
@@ -85,6 +89,8 @@ const AdminDashboard = () => {
   const formik=useForm(initialState,handleSubmit,SIGNUP_SCHEMA);
 
   const {values,registerField,errors,resetForm}=formik;
+
+  
   const [assignModal,setAssignModal]=useState(false);
   const handleAssignModal=()=>{
     setAssignModal(prev=>!prev);
@@ -100,11 +106,10 @@ const AdminDashboard = () => {
     try {
       setLoader(true);
       const data={
-        usrId:values.user,
+        userId:values.user,
         subAdminId:values.subAdmin
       }
       const res = await apiClient.post("/api/users/assign", data);
-      console.log("assignment",res);
       if(res.status==200){
           toast.success("Successfully Assigned!")
       }
@@ -113,7 +118,7 @@ const AdminDashboard = () => {
       toast.error("Something Went Wrong!")
     }finally{
       resetForm();
-      handleOpenModal();
+      handleAssignModal();
       setLoader(false);
     }
      assignFormik.resetForm();
@@ -122,8 +127,6 @@ const AdminDashboard = () => {
   const assignFormik=useForm(subAdminState,handleAssign,null);
 
   
-
-
   return (
     <>
       <Box
@@ -146,10 +149,12 @@ const AdminDashboard = () => {
       />
       {openModal && (
         <AddUser
+          type={'Create'}
           openModal={openModal}
           handleChange={handleOpenModal}
           formik={formik}
           values={values}
+          RoleOptions={RoleOptions}
         />
       )}
 

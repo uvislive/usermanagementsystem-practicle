@@ -17,7 +17,7 @@ const userPersistConfig = {
 
 // Combine reducers
 const rootReducer = combineReducers({
-  auth: authReducer, 
+  auth:persistReducer(userPersistConfig,authReducer), 
   // user: persistedUserReducer, // Persisted reducer
   // common:commonReducer
 });

@@ -8,7 +8,6 @@ const ApiResponse = require('../Common/ApiResponse');
 
 // Login User and issue JWT token with role name, issuer, and audience claims
 async function login(req, res) {
-  console.log("request login")
   const { email, password } = req.body;
 
   try {

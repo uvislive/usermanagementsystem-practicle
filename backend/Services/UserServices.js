@@ -60,7 +60,7 @@ async function getUserById(userId) {
 // Update a user by ID
 async function updateUser(userId, name, email, phone,roleId) {
     try {
-        const roleObjectId = new mongoose.Types.ObjectId(roleId._id);
+        const roleObjectId = new mongoose.Types.ObjectId(roleId);
         const userObjectId = new mongoose.Types.ObjectId(userId);
         // Check if the roleId exists
         const role = await Role.findById(roleObjectId);
@@ -68,10 +68,8 @@ async function updateUser(userId, name, email, phone,roleId) {
             return ApiResponse.error('Role does not exist.', 400);
         }
 
-        console.log("request arrived")
         // Check if the email already exists for another user
         const existingUser = await User.findOne({ email });
-        console.log("existing user",existingUser)
         // if (existingUser && existingUser._id.toString() !== userObjectId) {
         //     return ApiResponse.error('Another user with this email already exists.', 400);
         // }

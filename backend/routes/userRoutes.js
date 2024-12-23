@@ -3,6 +3,7 @@ const userController = require('../Controllers/UserController');
 const router = express.Router();
 const authGuard = require('../middleware/authGuard');
 
+// signup created for the understanding purpose 
 router.post('/signup', userController.createUser);
 router.post('/', authGuard(['Admin']), userController.createUser);
 router.post('/assign', authGuard(['Admin']), userController.assignUserToSubAdmin);

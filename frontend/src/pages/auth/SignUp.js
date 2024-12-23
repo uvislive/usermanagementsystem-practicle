@@ -83,9 +83,7 @@ export default function SignUp(props) {
 
   const handleSubmit = async (values) => {
     try {
-      console.log("values", values);
       const res = await apiClient.post("/api/users/signup", values);
-      console.log("res", res);
       if(res.status==200){
           navigate("/");
           toast.success("User Registered!")
@@ -111,8 +109,6 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
   return <MenuItem key={idx} value={element.value}>{element.label}</MenuItem>
 })
 
-console.log("values",values);
-console.log("errors",errors)
 
   return (
     // <AppTheme {...props}>

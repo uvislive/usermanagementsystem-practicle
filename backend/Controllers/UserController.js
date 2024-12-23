@@ -4,7 +4,6 @@ const UserSubAdminService = require('../services/UserSubAdminServices');
 
 // Create a new role
 async function createUser(req, res) {
-    console.log("req.done")
     const { name, email, phone, password, roleId } = req.body;
     try {
         const response = await UserService.createUser(name, email, phone, password, roleId);
@@ -27,10 +26,8 @@ async function getAllUsers(req, res) {
 // Get a role by ID
 async function getUserById(req, res) {
     const { userId } = req.params;
-    console.log(userId,"userid");
     try {
         const response = await UserService.getUserById(userId);
-        console.log(response,"response");
 
         return res.status(response.statusCode).json(response);
     } catch (error) {
@@ -42,8 +39,6 @@ async function getUserById(req, res) {
 async function updateUser(req, res) {
     const { userId } = req.params;
     const { name, email, phone, roleId } = req.body;
-    console.log("req.body",req.body);
-    console.log("userid",userId)
     try {
         const response = await UserService.updateUser(userId, name, email, phone, roleId);
         return res.status(response.statusCode).json(response);

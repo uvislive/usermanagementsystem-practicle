@@ -39,7 +39,6 @@ const subAdminsOptions= subAdmins?.map((element,idx)=>{
     return <MenuItem key={idx} value={element._id}>{element.name}</MenuItem>
   })
 
-console.log("subadminoptions",subAdminsOptions)
 
 
   return (
@@ -83,7 +82,7 @@ console.log("subadminoptions",subAdminsOptions)
             </Grid>
 
             <Button type="submit" fullWidth variant="contained">
-              Sign up
+              Assign 
             </Button>
           </Box>
         </Box>

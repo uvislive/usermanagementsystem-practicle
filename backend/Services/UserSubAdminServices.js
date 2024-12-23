@@ -9,11 +9,11 @@ async function assignUserToSubAdmin(userId, subAdminId) {
         // Ensure both user and subadmin exist
         const userObjectId = new mongoose.Types.ObjectId(userId);
         const subAdminObjectId = new mongoose.Types.ObjectId(subAdminId);
-
         const user = await User.findById(userObjectId);
         if (!user) {
             return ApiResponse.error('User does not exist.', 400);
         }
+        
 
         const subAdmin = await User.findById(subAdminObjectId);
         if (!subAdmin) {
@@ -58,26 +58,25 @@ async function assignUserToSubAdmin(userId, subAdminId) {
 async function getUsersMappedToSubAdmin(subAdminRoleId) {
     try {
         const subAdminObjectId = new mongoose.Types.ObjectId(subAdminRoleId);
-
+        
+        
         // Validate if the subadmin roleId exists and is valid
-        const subAdminRole = await Role.findById(subAdminObjectId);
-        if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
-            return ApiResponse.error('The provided roleId is not a valid subadmin.', 400);
-        }
+        const subAdminRole = await User.findById(subAdminObjectId);
+        // if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
+        //     return ApiResponse.error('The provided roleId is not a valid sub-admin.', 400);
+        // }
 
         // Get the users mapped to the given subadmin role ID
-        const mappedUsers = await UserSubAdmin.find({ subAdminId: subAdminObjectId })
+        const mappedUsers = await UserSubAdmin.find({ subAdminId: subAdminObjectId})
             .populate('userId') // Assuming the UserSubAdmin model maps userId to the User model
             .exec();
 
-        console.log("mapped user",mappedUsers)
         if (mappedUsers.length === 0) {
             return ApiResponse.error('No users found for this subadmin.', 404);
         }
 
         // Extract userIds from mappedUsers
-        const userIds = mappedUsers.map((assignment) => assignment.userId._id);
-
+        const userIds = mappedUsers.map((assignment) => assignment.userId);
         // Fetch all users from the User table based on userIds
         const users = await User.find({ _id: { $in: userIds } });
 
@@ -95,20 +94,19 @@ async function getUsersMappedToSubAdmin(subAdminRoleId) {
 // Function to update user assigned to subadmin
 async function updateUserAssignedToSubAdmin(userId, subAdminRoleId, updateData) {
     try {
+        
         const subAdminObjectId = new mongoose.Types.ObjectId(subAdminRoleId);
-
         // Validate if the subadmin roleId exists and is valid
-        const subAdminRole = await Role.findById(subAdminObjectId);
-        if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
-            return ApiResponse.error('The provided roleId is not a valid subadmin.', 400);
-        }
+        const subAdminRole = await User.findById(subAdminObjectId);
+        // if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
+        //     return ApiResponse.error('The provided roleId is not a valid subadmin.', 400);
+        // }
 
         // Ensure user is mapped to the given subadmin
         const userSubAdminMapping = await UserSubAdmin.findOne({
             userId: userId,
             subAdminId: subAdminObjectId
         });
-
         if (!userSubAdminMapping) {
             return ApiResponse.error('User is not assigned to this subadmin.', 400);
         }
@@ -126,6 +124,7 @@ async function updateUserAssignedToSubAdmin(userId, subAdminRoleId, updateData) 
         return ApiResponse.error(error.message, 500);
     }
 }
+
 
 async function getUserAssignedToSubAdminById(userId, subAdminRoleId) {
     try {
@@ -166,10 +165,10 @@ async function deleteUserAssignedToSubAdmin(userId, subAdminRoleId) {
         const subAdminObjectId = new mongoose.Types.ObjectId(subAdminRoleId);
 
         // Validate if the subadmin roleId exists and is valid
-        const subAdminRole = await Role.findById(subAdminObjectId);
-        if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
-            return ApiResponse.error('The provided roleId is not a valid subadmin.', 400);
-        }
+        const subAdminRole = await User.findById(subAdminObjectId);
+        // if (!subAdminRole || subAdminRole.name !== 'Sub-Admin') {
+        //     return ApiResponse.error('The provided roleId is not a valid subadmin.', 400);
+        // }
 
         // Ensure user is mapped to the given subadmin
         const userSubAdminMapping = await UserSubAdmin.findOne({

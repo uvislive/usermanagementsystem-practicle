@@ -5,7 +5,6 @@ const ApiResponse = require('../Common/ApiResponse');
 async function getAllUsers(req, res) {
     try {
         const { subAdminRoleId } = req.params;
-        console.log("sub admin request arrived");
         const response = await userSubAdminService.getUsersMappedToSubAdmin(subAdminRoleId);
         return res.status(response.statusCode).json(response);
     } catch (error) {
