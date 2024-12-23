@@ -9,6 +9,7 @@ import MainDashboard from '../pages/dashboard/UserView'
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
 import SubAdminDashboard from "../pages/dashboard/SubAdminDashboard";
 import UserDashboard from "../pages/dashboard/UserDashboard";
+import AccessDenied from "../components/AccessDenied";
 
 const Router = () => {
   return (
@@ -18,7 +19,7 @@ const Router = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<SignIn />} />
-        <Route path="/access-denied" element={<SignIn />} />
+        <Route path="/access-denied" element={<AccessDenied />} />
 
         {/* Protected Routes */}
         <Route element={<PrivateRouter allowedRoles={["User", "Admin","Sub-Admin"]} />}>
