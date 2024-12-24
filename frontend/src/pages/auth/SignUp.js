@@ -140,7 +140,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
             sx={{ color: "red",py:0,my:0 }}
           >
             <span>Note*: </span>
-            Admin registration is provided for ease of use.
+            registration is provided for ease of use.
           </Typography>
           <Box
             component="form"
