@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "676848f8ffef3ef3188973dc"
+  },
+  "name": "uvixass sing",
+  "email": "user@gmail.com",
+  "phone": "3333333333",
+  "password": "$2a$10$IBJ1Q2lrLkmah3Ef1sLYYex5yOmixJjNOmVR2kSp0zl9U49h8LUd.",
+  "roleId": {
+    "$oid": "6768369c503488aea815e8bf"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67686968157f4d210e3f2a74"
+  },
+  "name": "yuvrajsinh darbar",
+  "email": "admin@gmail.com",
+  "phone": "6666666666",
+  "password": "$2a$10$piTwswXZoYXjyp/FSr.aiOgoK5icVJjJx3KpmzMrabZh98xKXdHHm",
+  "roleId": {
+    "$oid": "676836ce503488aea815e8c0"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67688ad62491b66309a27cfc"
+  },
+  "name": "yuvrajsinh darbar",
+  "email": "yuvrajsinh20614@gmail.com",
+  "phone": "2222222222",
+  "password": "$2a$10$u7irGwUVEGRPMbr5e1zMxOqOHZocGVIabyV/ZzRj1loWLtLgYmF8m",
+  "roleId": {
+    "$oid": "6768370d503488aea815e8c1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67688b152491b66309a27d04"
+  },
+  "name": "uvislive",
+  "email": "hahhhhhhh@gmail.com",
+  "phone": "5555555555",
+  "password": "$2a$10$kFD4UoEC/tCBsYMxf2fTy.QrTS/cHZOVWGCFVjp1qAGAEeUZCfJPe",
+  "roleId": {
+    "$oid": "6768370d503488aea815e8c1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6768926a2491b66309a27d95"
+  },
+  "name": "aaru",
+  "email": "aaru@gmail.com",
+  "phone": "3333333333",
+  "password": "$2a$10$Ehm/Hc.yEPFmfEXIHUpizu4rWRQ3b.aC0iQLjPPPBPkxXj3KwGGL2",
+  "roleId": {
+    "$oid": "6768370d503488aea815e8c1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67695601d5eb3bf4ee9dd448"
+  },
+  "name": "thegodd",
+  "email": "yuvrajsinh206s4@gmail.com",
+  "phone": "3333333333",
+  "password": "$2a$10$iE4FJNvLjPH1UpjvE5Ltxe/0DVssi/cxbFe1lfQJpuixahrdW4Enm",
+  "roleId": {
+    "$oid": "6768370d503488aea815e8c1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6769b7fbce4678ac6777fdaa"
+  },
+  "name": "uvi",
+  "email": "uvi@gmail.com",
+  "phone": "2222222222",
+  "password": "$2a$10$RidcYgsZuH03POpAmmndmeQHfXTY/tgdMcgGOTyphRiqP5AFkUbQu",
+  "roleId": {
+    "$oid": "6768369c503488aea815e8bf"
+  },
+  "__v": 0
+}]
