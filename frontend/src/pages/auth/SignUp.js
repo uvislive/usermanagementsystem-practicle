@@ -14,7 +14,6 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import { useEffect } from 'react';
-import { createUser, fetchTest } from '../../api/homeApi';
 import { toast } from 'react-toastify';
 import { useForm } from '../../hooks/useFormHook';
 import  { PasswordField,InputField, ImageField, MobileField, SelectField } from '../../utils/InputField';
