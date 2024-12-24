@@ -1,4 +1,4 @@
-const userSubAdminService = require('../services/UserSubAdminServices');
+const userSubAdminService = require("../Services/UserSubAdminServices")
 const ApiResponse = require('../Common/ApiResponse');
 
 // Get all roles

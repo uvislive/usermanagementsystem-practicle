@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User'); // Assuming you have a User model
 const Role = require('../models/Role'); // Role model to get the role name
-const config = require('../config');
+const config = require('../Config');
 const mongoose = require('mongoose');
 const ApiResponse = require('../Common/ApiResponse');
 

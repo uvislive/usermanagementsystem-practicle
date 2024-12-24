@@ -1,4 +1,4 @@
-const RoleService = require('../services/roleServices');
+const RoleService = require('../Services/RoleServices');
 const ApiResponse = require('../Common/ApiResponse');
 
 // Create a new role

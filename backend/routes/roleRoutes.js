@@ -1,5 +1,5 @@
 const express = require('express');
-const roleController = require('../controllers/roleController');
+const roleController = require('../Controllers/roleController');
 const router = express.Router();
 const authGuard = require('../middleware/authGuard');
 
