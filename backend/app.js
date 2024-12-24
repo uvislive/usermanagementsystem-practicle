@@ -9,6 +9,8 @@ const userRoutes = require('./routes/userRoutes');
 const userSubAdminRoutes = require('./routes/userSubAdminRoutes');
 const authRoutes = require('./routes/authRoutes');
 const authGuard = require('./middleware/authGuard');
+require('dotenv').config();
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,7 +23,8 @@ app.use((req, res, next) => {
   });
 
 // MongoDB connection string
-const mongoURI = 'mongodb://localhost:27017/practicle';
+// const mongoURI = 'mongodb://localhost:27017/practicle'; // use this if that will give error
+const mongoURI =process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
