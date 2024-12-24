@@ -192,6 +192,7 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
               <Grid item xs={12}>
                 <SelectField 
                 type="select" 
+                size='small'
                 label="Select Role" 
                 name="roleId"
                  value={values.roleId}
