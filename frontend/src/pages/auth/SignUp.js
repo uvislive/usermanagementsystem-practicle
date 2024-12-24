@@ -21,9 +21,7 @@ import { SIGNUP_SCHEMA } from '../../validationUtil/validationschemas/commonSche
 import apiClient from '../../api/apiClient';
 import { Grid, MenuItem } from '@mui/material';
 import {ROLE_CONSTANTS_LIST }  from "../../constants/optionsConstant"
-// import AppTheme from '../shared-theme/AppTheme';
-// import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
-// import ColorModeSelect from '../shared-theme/ColorModeSelect';
+
 
 
 const Card = styled(MuiCard)(({ theme }) => ({

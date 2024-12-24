@@ -18,6 +18,7 @@ import {setTokenData} from '../store/slices/authSlice'
 import ThemeSwitch from '../utils/ThemeSwitch';
 import SideBarDrawer from './SideBar';
 import useBreakpoint from '../hooks/useBreakPoint';
+import { MenuOpen } from '@mui/icons-material';
 
 const pages = [];
 
@@ -66,14 +67,14 @@ function ResponsiveAppBar({isOpenedDrawer,openDrawer}) {
                   }}
                   onClick={openDrawer}
                 >
-                  <AdbIcon
+                  <MenuOpen
                     sx={{
                       display: { xs: "none", md: "flex", fontSize: "35px" },
                       mr: 1,
                     }}
                   />
                   <Typography style={{ fontWeight: "bold", fontSize: "28px" }}>
-                     Stocxx
+                     Stoxx
                   </Typography>
                 </Box>
               </>
