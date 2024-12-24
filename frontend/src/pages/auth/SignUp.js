@@ -134,6 +134,14 @@ const RoleOptions= ROLE_CONSTANTS_LIST?.map((element,idx)=>{
           >
             Sign up
           </Typography>
+          <Typography
+  variant="body2"
+  fontSize="13px"
+  sx={{ color: "red" }}
+>
+  <span>Note*: </span> 
+  Admin registration is provided for ease of use.
+</Typography>
           <Box
             component="form"
             onSubmit={formik.handleSubmit}
